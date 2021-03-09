@@ -14,6 +14,7 @@ def fibon(n):
             b = c
         return b
 
-print("5th Finonacci term: ", fibon(5))
-print("10th Finonacci term: ", fibon(10))
-print("15th Finonacci term: ", fibon(15))
+
+print("5th Fibonacci term: ", fibon(5))
+print("10th Fibonacci term: ", fibon(10))
+print("15th Fibonacci term: ", fibon(15))
