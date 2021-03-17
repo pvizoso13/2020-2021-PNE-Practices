@@ -1,6 +1,6 @@
 from P0.Seq0 import *
 
-filename = ["U5", "ADA", "FRAT1", "FXN"]
+filename = ["U5.txt", "ADA.txt", "FRAT1.txt", "FXN.txt"]
 bases = ["A", "C", "T", "G"]
 FOLDER = "../Session-04/"
 for gene_file in filename:
