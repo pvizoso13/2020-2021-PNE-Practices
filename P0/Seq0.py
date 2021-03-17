@@ -22,8 +22,7 @@ def seq_count_base(seq, base):
     from pathlib import Path
     file_contents = Path(seq).read_text()
     index_start = file_contents.find("\n")
-    seq_dna = file_contents[index_start + 1:]
-    seq_dna = seq_dna.replace("\n", "")
+    seq_dna = file_contents[index_start + 1:].replace("\n", "")
     count_base = 0
     for character in seq_dna:
         if character == base:
