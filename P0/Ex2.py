@@ -1,7 +1,7 @@
 from P0.Seq0 import *
 
 FOLDER = "../Session-04/"
-filename = "U5"
+filename = "U5.txt"
 
 DNA_FILE = FOLDER + filename
 
