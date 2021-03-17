@@ -1,6 +1,4 @@
-FOLDER = "../P0/"
-
-from FOLDER+Seq0 import *
+from P0.Seq0 import *
 
 seq1 = "ATTCCCGGGG"
 
@@ -12,3 +10,4 @@ print(f"    A: {seq_count_base(seq1, 'A')}")
 print(f"    T: {seq_count_base(seq1, 'T')}")
 print(f"    C: {seq_count_base(seq1, 'C')}")
 print(f"    G: {seq_count_base(seq1, 'G')}")
+#  does not work
