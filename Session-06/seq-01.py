@@ -27,6 +27,10 @@ class Gene(Seq):
         self.name = name
         print("New gene created")
 
+    def __str__(self):
+        """Print the Gene name along with the sequence"""
+        return self.name + "-" + self.strbases
+
 
 s1 = Seq("AGTACACTGGT")
 g = Gene("CGTAAC", "FRAT1")
