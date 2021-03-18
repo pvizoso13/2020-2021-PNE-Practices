@@ -1,4 +1,4 @@
-from P0.Seq0 import *
+from Seq0 import *
 
 FOLDER = "../Session-04/"
 filename = "U5.txt"
