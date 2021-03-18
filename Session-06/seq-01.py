@@ -4,9 +4,32 @@ class Seq:
         self.strbases = strbases
         print("New sequence created!")
 
-# Main program
+    def __str__(self):
+        """Method called when the object is being printed"""
+
+        return self.strbases
+
+    def len(self):
+        """Calculate the length of the sequence"""
+        return len(self.strbases)
+
+
+class Gene(Seq):
+    """This class is derived from the Seq Class
+       All the objects of class Gene will inheritate
+       the methods from the Seq class
+    """
+    def __init__(self, strbases, name=""):
+
+        # -- Call first the Seq initializer and then the
+        # -- Gene init method
+        super().__init__(strbases)
+        self.name = name
+        print("New gene created")
 
 
 s1 = Seq("AGTACACTGGT")
-s2 = Seq("CGTAAC")
+g = Gene("CGTAAC", "FRAT1")
 
+print(f"Sequence 1: {s1}")
+print(f"Gene: {g}")
