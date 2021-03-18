@@ -1,14 +1,20 @@
 class Seq:
     """A class for representing sequences"""
     def __init__(self, strbases):
-        self.strbases = strbases
-        if self.is_valid_sequence():
+        if self.is_valid_sequence_2(strbases):
             self.strbases = strbases
             print("New sequence created!")
-
+            self.strbases = strbases
         else:
             self.strbases = "Error"
             print("INCORRECT Sequence detected")
+
+    @staticmethod
+    def is_valid_sequence_2(bases):
+        for c in bases:
+            if c != "A" and c != "C" and c != "G" and c != "T":
+                return False
+        return True
 
 
     def is_valid_sequence(self):
