@@ -31,7 +31,6 @@ class Seq:
         """Calculate the length of the sequence"""
         return len(self.strbases)
 
-
     def print_seqs(seq_list):
         for seq in seq_list:
             return f"Sequence {seq_list.index(seq)}: (Length: {seq.len()}) {seq}"
