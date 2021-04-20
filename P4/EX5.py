@@ -8,15 +8,17 @@ PORT = 8080
 
 
 def get_resource(path):
-    response = ""
-    if path == "/info/A":
+    cod = 200
+    if path == "/":
+        response = Path("index.html").read_text()
+    elif path == "/info/A":
         response = Path("A.html").read_text()
     elif path == "/info/C":
         response = Path("C.html").read_text()
-    elif path == "/info/T":
-        response = Path("T.html").read_text()
     elif path == "/info/G":
         response = Path("G.html").read_text()
+    elif path == "/info/T":
+        response = Path("T.html").read_text()
     else:
         response = Path("Error.html").read_text()
         cod = 404
@@ -39,18 +41,31 @@ def process_client(s):
     print("Request line: ", end="")
     termcolor.cprint(req_line, "green")
 
+    # -- Process the request line
     words = req_line.split(' ')
+
+    # -- Get the method and path
     method = words[0]
-    path = words[1]
+
     print(f"Method: {method}")
-    print(f"Path: {path}")
 
+    # -- Response body
+    # -- Initially it is blank
     body = ""
-    if method == "GET":
-        body = get_resource(path)
 
-    # -- Status line: We respond that everything is ok (200 code)
-    status_line = "HTTP/1.1 200 OK\n"
+    # -- Error code
+    code = 0
+    if method == "GET":
+        path = words[1]
+        print(f"Path: {path}")
+        body, code = get_resource(path)
+
+    if code == 200:
+        status_str = "OK"
+    else:
+        status_str = "Not Found"
+
+    status_line = f"HTTP/1.1 {code} {status_str}\n"
 
     # -- Add the Content-Type header
     header = "Content-Type: text/html\n"
