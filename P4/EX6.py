@@ -9,7 +9,9 @@ PORT = 8080
 
 def get_resource(path):
     cod = 200
-    if path == "/info/A":
+    if path == "/":
+        response = Path("index.html").read_text()
+    elif path == "/info/A":
         response = Path("A.html").read_text()
     elif path == "/info/C":
         response = Path("C.html").read_text()
