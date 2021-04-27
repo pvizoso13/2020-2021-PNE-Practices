@@ -1,6 +1,12 @@
 import http.server
 import socketserver
 import termcolor
+import pathlib
+
+
+def read_html_file(filename):
+    content = pathlib.Path(filename).read_text()
+    return content
 
 # Define the Server's port
 PORT = 8080
@@ -19,20 +25,28 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
-
+        termcolor.cprint(self.path, 'blue')
         # IN this simple server version:
         # We are NOT processing the client's request
-        # It is a happy server: It always returns a message saying
-        # that everything is ok
+        if self.path == "/" or self.path == "/index.html":
+            contents = read_html_file("./html/index.html")
+        elif self.path == "/info/A" or self.path == "/info/A.html":
+            contents = read_html_file("./html/info/A.html")
+        elif self.path == "/info/C" or self.path == "/info/C.html":
+            contents = read_html_file("./html/info/C.html")
+        elif self.path == "/info/T" or self.path == "/info/T.html":
+            contents = read_html_file("./html/info/T.html")
+        elif self.path == "/info/G" or self.path == "/info/G.html":
+            contents = read_html_file("./html/info/G.html")
+        else:
+            contents = read_html_file('./html/Error.html')
 
-        # Message to send back to the clinet
-        contents = "I am the happy server! :-)"
 
         # Generating the response message
         self.send_response(200)  # -- Status line: OK!
 
         # Define the content-type header:
-        self.send_header('Content-Type', 'text/plain')
+        self.send_header('Content-Type', 'text/html')
         self.send_header('Content-Length', len(contents.encode()))
 
         # The header is finished
