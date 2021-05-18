@@ -103,7 +103,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             name, gene = pairs[0].split("=")
 
             s = Seq()
-            s.read_fasta(FOLDER + gene)
+            s.read_fasta(FOLDER + gene + ".txt")
             gene_str = str(s)
             # -- Generate the html code
             contents = f"""
@@ -115,7 +115,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         </head >
                         <body>
                         <h2> Gene: {gene}</h2>
-                        <textarea readonly rows="20" cols="80"> {gene_str} </textarea>
+                        <textarea readonly rows="40" cols="100"> {gene_str} </textarea>
                         <br>
                         <br>
                         <a href="/">Main page</a>
