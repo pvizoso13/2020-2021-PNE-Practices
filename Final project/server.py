@@ -114,6 +114,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 for chromosome in karyotype:
                     contents += f"""<p>- {chromosome}<p>"""
                 contents += f"""<a href="/">Main page</a>"""
+        elif first_argument == "/chromosomeLength":
+            ENDPOINT = "/info/assembly"
+            second_argument = arguments[1]
+            third_argument, fourth_argument = second_argument.split("&")
+            species = third_argument.split("=")[1]
+            chromosome = fourth_argument.split("=")[1]
+
 
         else:
             contents = Path('Error.html').read_text()
