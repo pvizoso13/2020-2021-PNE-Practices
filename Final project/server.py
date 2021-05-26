@@ -62,4 +62,48 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 for name in species:
                     contents += f"""<p>- {name["common_name"]}<p>"""
                 contents += f"""<a href="/">Main page</a>"""
-            elif third_argument
+            elif int(third_argument) < 0 or int(third_argument) > len(species):
+                contents = Path('Error.html').read_text()
+                error_code = 404
+            else:
+                contents = f"""
+                            <!DOCTYPE html>
+                            <html lang = "en">
+                            <head>
+                            <meta charset = "utf-8" >
+                              <title> List of species </title >
+                            </head >
+                            <body>
+                            <body style="background-color: LimeGreen">
+                            <p>Total number of species: {len(species)}</p>
+                            <p>Limit of species selected: {third_argument}</p>
+                            <p>Name(s) of the species:</p>
+                            </body>
+                            </html>
+                            """
+                error_code = 200
+                for name in species[:int(third_argument)]:
+                    contents += f"""<p>- {name["common_name"]}<p>"""
+
+        else:
+            contents = Path('Error.html').read_text()
+            error_code = 404
+
+        self.send_response(error_code)
+        self.send_header('Content-Type', "text/html")
+        self.send_header('Content-Length', len(str.encode(contents)))
+        self.end_headers()
+        self.wfile.write(str.encode(contents))
+        return
+
+
+Handler = TestHandler
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print("Serving at PORT", PORT)
+
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("")
+        print("Stopped by the user")
+        httpd.server_close()
