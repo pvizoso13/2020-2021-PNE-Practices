@@ -86,6 +86,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 error_code = 200
                 for name in species[:int(third_argument)]:
                     contents += f"""<p>- {name["common_name"]}<p>"""
+                contents += f"""<a href="/">Main page</a>"""
 
         else:
             contents = Path('Error.html').read_text()
