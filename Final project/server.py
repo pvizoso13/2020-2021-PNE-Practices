@@ -1,4 +1,5 @@
-import http.client
+import http.server
+import socketserver
 import json
 import termcolor
 from pathlib import Path
@@ -10,7 +11,7 @@ def species_get(endpoint):
     print(f"\nConnecting to server: {SERVER}:{PORT}\n")
     connection = http.client.HTTPConnection(SERVER)
     try:
-        connection.request("GET", ENDPOINT + PARAMS)
+        connection.request("GET", endpoint)
     except ConnectionRefusedError:
         print("ERROR! The database is down")
         exit()
@@ -20,8 +21,9 @@ def species_get(endpoint):
     data_1 = json.loads(data)
     return data_1
 
+PORT = 8080
 PARAMS = "?content-type=application/json"
-
+socketserver.TCPServer.allow_reuse_address = True
 
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
@@ -32,10 +34,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         arguments = path.split('?')
         first_argument = arguments[0]
         if first_argument == "/":
-            contents = Path('form-4.html').read_text()
+            contents = Path('index.html').read_text()
             error_code = 200
         elif first_argument == "/listSpecies":
-            ENDPOINT = "/info/species"
+            ENDPOINT = "info/species"
             species = species_get(ENDPOINT+PARAMS)["species"]
             if len(arguments) > 1:
                 second_argument = arguments[1]
