@@ -88,6 +88,33 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     contents += f"""<p>- {name["common_name"]}<p>"""
                 contents += f"""<a href="/">Main page</a>"""
 
+        elif first_argument == "/karyotype":
+            ENDPOINT = "info/assembly/"
+            second_argument = arguments[1]
+            third_argument = second_argument.split("=")[1]
+            if third_argument == "":
+                contents = Path('Error.html').read_text()
+                error_code = 404
+            else:
+                karyotype = species_get(ENDPOINT + third_argument + PARAMS)["karyotype"]
+                contents = f"""
+                           <!DOCTYPE html>
+                           <html lang = "en">
+                           <head>
+                           <meta charset = "utf-8" >
+                             <title> Karyotype </title >
+                           </head >
+                           <body>
+                           <body style="background-color: DeepSkyBlue">
+                           <p>The names of the chromosomes are:</p>
+                           </body>
+                           </html>
+                           """
+                error_code = 200
+                for chromosome in karyotype:
+                    contents += f"""<p>- {chromosome}<p>"""
+                contents += f"""<a href="/">Main page</a>"""
+
         else:
             contents = Path('Error.html').read_text()
             error_code = 404
