@@ -149,6 +149,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     error_code = 200
                     if contents == "":
                         contents = Path('Error.html').read_text()
+                    contents += f"""<a href="/">Main page</a>"""
 
                 except KeyError:  # if not available, error page
                     contents = Path('Error.html').read_text()
