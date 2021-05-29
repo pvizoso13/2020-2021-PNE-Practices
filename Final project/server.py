@@ -73,7 +73,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         <html lang="en">
                         <head>
                             <meta charset="utf-8">
-                            <title>List of species</title>
+                            <title> List of species </title>
                         </head>
                         <body style="background-color: limegreen">
                         <p>Total number of species is: {len(species)} </p>
@@ -117,19 +117,19 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     contents = Path('Error.html').read_text()
                     error_code = 404
         elif first_argument == "/chromosomeLength":
-            ENDPOINT = "/info/assembly"
+            ENDPOINT = "/info/assembly/"  # add '/' so in line 131 is correct the path
             second_argument = arguments[1]
             third_argument, fourth_argument = second_argument.split("&")
             species = third_argument.split("=")[1]
             chromosome = fourth_argument.split("=")[1]
 
-            if species == '' or chromosome == '':  # if specie and/or chromosome left in blank
+            if species == "" or chromosome == "":  # if specie and/or chromosome left in blank
                 contents = Path('Error.html').read_text()
                 error_code = 404
             else:  # if none is blank
                 try:  # check if arguments available
                     chromo_len = species_get(ENDPOINT + species + PARAMS)["top_level_region"]  # path key obtained
-                    contents =''
+                    contents = ""
                     for element in chromo_len:
                         if element["coord_system"] == "chromosome":  # access to key coord_system when 'chromosome'
                             if element["name"] == chromosome:  # specified chromosome variable
@@ -137,16 +137,18 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                         <!DOCTYPE html>
                                         <html lang = "en">
                                         <head>
-                                        <meta charset = "utf-8" >
+                                          <meta charset = "utf-8" >
                                           <title> Chromosome length </title >
                                         </head >
                                         <body>
                                         <body style="background-color: darkviolet">
-                                        <p>Length of chromosome: {chromosome} of {species} is: {third_argument}</p>
-                                        <p>Name(s) of the species:</p>
                                         </body>
                                         </html>
                                         """
+                                contents += f"""<p>Length of chromosome: {chromosome} of {species} is: {element['length']}</p>"""
+                    error_code = 200
+                    if contents == "":
+                        contents = Path('Error.html').read_text()
 
                 except KeyError:  # if not available, error page
                     contents = Path('Error.html').read_text()
