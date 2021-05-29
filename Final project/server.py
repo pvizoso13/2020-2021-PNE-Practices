@@ -5,10 +5,10 @@ import termcolor
 from pathlib import Path
 
 
-def species_get(endpoint):
+def species_get(endpoint):  # function to obtain species from server rest.ensembl.org
     PORT = 8080
     SERVER = "rest.ensembl.org"
-    print(f"\nConnecting to server: {SERVER}:{PORT}\n")
+    print(f"\nConnecting to server: {SERVER}, and port: {PORT}\n")
     connection = http.client.HTTPConnection(SERVER)
     try:
         connection.request("GET", endpoint)
@@ -17,8 +17,8 @@ def species_get(endpoint):
         exit()
     response = connection.getresponse()
     print(f"Response received!: {response.status} {response.reason}\n")
-    data = response.read().decode("utf-8")
-    data_1 = json.loads(data)
+    data = response.read().decode("utf-8")  # answer decoded
+    data_1 = json.loads(data)  # json format
     return data_1
 
 PORT = 8080
@@ -28,12 +28,12 @@ socketserver.TCPServer.allow_reuse_address = True
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
-        termcolor.cprint(self.requestline, 'green')
+        termcolor.cprint(self.requestline, 'blue')  # line printed on terminal of service requested
         req_line = self.requestline.split(' ')
         path = req_line[1]
         arguments = path.split('?')
-        first_argument = arguments[0]
-        if first_argument == "/":
+        first_argument = arguments[0]  # first part path until ?
+        if first_argument == "/":  # if just /, main page -> index.html
             contents = Path('index.html').read_text()
             error_code = 200
         elif first_argument == "/listSpecies":
@@ -41,10 +41,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             species = species_get(ENDPOINT+PARAMS)["species"]
             if len(arguments) > 1:
                 second_argument = arguments[1]
-                third_argument = second_argument.split('=')[1]
+                third_argument = second_argument.split('=')[1]  # from = to the end of second argument
             else:
                 third_argument = ""
-            if third_argument == "":
+            if third_argument == "":  # no number (no 3arg), print all species
                 contents = f"""
                         <!DOCTYPE html>
                         <html lang = "en">
@@ -63,11 +63,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 error_code = 200
                 for name in species:
                     contents += f"""<p>- {name["common_name"]}<p>"""
-                contents += f"""<a href="/">Main page</a>"""
-            elif int(third_argument) < 0 or int(third_argument) > len(species):
+                contents += f"""<a href="/">Main page</a>"""  # return to main page -> index.html
+            elif int(third_argument) < 0 or int(third_argument) > len(species):   # 3rd argument not in range
                 contents = Path('Error.html').read_text()
                 error_code = 404
-            else:
+            else:  # if 3arg in range, print 3arg species
                 contents = f"""
                             <!DOCTYPE html>
                             <html lang = "en">
@@ -89,10 +89,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents += f"""<a href="/">Main page</a>"""
 
         elif first_argument == "/karyotype":
-            ENDPOINT = "info/assembly/"
+            ENDPOINT = "info/assembly/"  # final / because introduced in variable karyotype (line 99)
             second_argument = arguments[1]
             third_argument = second_argument.split("=")[1]
-            if third_argument == "":
+            if third_argument == "":  # no argument introduced
                 contents = Path('Error.html').read_text()
                 error_code = 404
             else:
@@ -113,13 +113,14 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 error_code = 200
                 for chromosome in karyotype:
                     contents += f"""<p>- {chromosome}<p>"""
-                contents += f"""<a href="/">Main page</a>"""
+                contents += f"""<a href="/">Main page</a>"""  # return main page -> index.html
         elif first_argument == "/chromosomeLength":
             ENDPOINT = "/info/assembly"
             second_argument = arguments[1]
             third_argument, fourth_argument = second_argument.split("&")
             species = third_argument.split("=")[1]
             chromosome = fourth_argument.split("=")[1]
+            if second_argument == :
 
 
         else:

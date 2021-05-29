@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
     <title>Final Project</title>
-</head>
-<body>
-<h1>Browsing Human and Vertebrates Genome</h1>
-<body style="background-color: moccasin">
-    <b>1. List of species in the genome database</b>
-    <br>
+  </head>
+  <h1>Browsing Human and Vertebrates genome</h1>
+  <body style="background-color: moccasin">
     <form action="listSpecies" method="get">
-      Limit: <input type="text" name="limit">
-        <br>
-        <input type="submit" value="Send">
+      <br>
+      <b>1. List of species in the genome database</b>
+      <br>
+      Limit:  <input type="text" name="limit">
+      <br>
+      <br>
+        <input type="submit" value="Send"/>
     </form>
-    <br>
-    <b>2. Information about the karyotype</b>
-    <br>
     <form action="karyotype" method="get">
-      Specie: <input type="text" name="specie">
-        <br>
-        <input type="submit" value="Send">
+      <br>
+      <b>2. Information about the karyotype</b>
+      <br>
+      Select the species:  <input type="text" name="specie">
+      <br>
+      <br>
+        <input type="submit" value="Send"/>
+      <br>
     </form>
-    <br>
-
-</body>
-</html>
+    <form action="chromosomeLength" method="get">
+      <br>
+      <b>3. Chromosome Length</b>
+      <br>
+      Select the species:  <input type="text" name="specie">
+      <br>
+      <br>
+      Select a chromosome:  <input type="text" name="chromosome">
+      <br>
+      <br>
+        <input type="submit" value="Send"/>
+      <br>
+    </form>
