@@ -69,58 +69,89 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 error_code = 404
             else:  # if 3arg in range, print 3arg species
                 contents = f"""
-                            <!DOCTYPE html>
-                            <html lang = "en">
-                            <head>
-                            <meta charset = "utf-8" >
-                              <title> List of species </title >
-                            </head >
-                            <body>
-                            <body style="background-color: LimeGreen">
-                            <p>Total number of species: {len(species)}</p>
-                            <p>Limit of species selected: {third_argument}</p>
-                            <p>Name(s) of the species:</p>
-                            </body>
-                            </html>
-                            """
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="utf-8">
+                            <title>List of species</title>
+                        </head>
+                        <body style="background-color: limegreen">
+                        <p>Total number of species is: {len(species)} </p>
+                        <p>The limit you have selected is:{third_argument}</p>
+                        <p>The names of the species are:</p>
+                        </body></html>
+                        """
                 error_code = 200
                 for name in species[:int(third_argument)]:
                     contents += f"""<p>- {name["common_name"]}<p>"""
                 contents += f"""<a href="/">Main page</a>"""
 
         elif first_argument == "/karyotype":
-            ENDPOINT = "info/assembly/"  # final / because introduced in variable karyotype (line 99)
+            ENDPOINT = "info/assembly/"  # final '/' because introduced in variable karyotype (line 99)
             second_argument = arguments[1]
             third_argument = second_argument.split("=")[1]
             if third_argument == "":  # no argument introduced
                 contents = Path('Error.html').read_text()
                 error_code = 404
             else:
-                karyotype = species_get(ENDPOINT + third_argument + PARAMS)["karyotype"]
-                contents = f"""
-                           <!DOCTYPE html>
-                           <html lang = "en">
-                           <head>
-                           <meta charset = "utf-8" >
-                             <title> Karyotype </title >
-                           </head >
-                           <body>
-                           <body style="background-color: DeepSkyBlue">
-                           <p>The names of the chromosomes are:</p>
-                           </body>
-                           </html>
-                           """
-                error_code = 200
-                for chromosome in karyotype:
-                    contents += f"""<p>- {chromosome}<p>"""
-                contents += f"""<a href="/">Main page</a>"""  # return main page -> index.html
+                try:  # check if available
+                    karyotype = species_get(ENDPOINT + third_argument + PARAMS)["karyotype"]
+                    contents = f"""
+                               <!DOCTYPE html>
+                               <html lang = "en">
+                               <head>
+                               <meta charset = "utf-8" >
+                                 <title> Karyotype </title >
+                               </head >
+                               <body>
+                               <body style="background-color: DeepSkyBlue">
+                               <p>The names of the chromosomes are:</p>
+                               </body>
+                               </html>
+                               """
+                    error_code = 200
+                    for chromosome in karyotype:
+                        contents += f"""<p>- {chromosome}<p>"""
+                    contents += f"""<a href="/">Main page</a>"""  # return main page -> index.html
+                except KeyError:  # if not available, error page
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
         elif first_argument == "/chromosomeLength":
             ENDPOINT = "/info/assembly"
             second_argument = arguments[1]
             third_argument, fourth_argument = second_argument.split("&")
             species = third_argument.split("=")[1]
             chromosome = fourth_argument.split("=")[1]
-            if second_argument == :
+
+            if species == '' or chromosome == '':  # if specie and/or chromosome left in blank
+                contents = Path('Error.html').read_text()
+                error_code = 404
+            else:  # if none is blank
+                try:  # check if arguments available
+                    chromo_len = species_get(ENDPOINT + species + PARAMS)["top_level_region"]  # path key obtained
+                    contents =''
+                    for element in chromo_len:
+                        if element["coord_system"] == "chromosome":  # access to key coord_system when 'chromosome'
+                            if element["name"] == chromosome:  # specified chromosome variable
+                                contents = f"""
+                                        <!DOCTYPE html>
+                                        <html lang = "en">
+                                        <head>
+                                        <meta charset = "utf-8" >
+                                          <title> Chromosome length </title >
+                                        </head >
+                                        <body>
+                                        <body style="background-color: darkviolet">
+                                        <p>Length of chromosome: {chromosome} of {species} is: {third_argument}</p>
+                                        <p>Name(s) of the species:</p>
+                                        </body>
+                                        </html>
+                                        """
+
+                except KeyError:  # if not available, error page
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
+
 
 
         else:
