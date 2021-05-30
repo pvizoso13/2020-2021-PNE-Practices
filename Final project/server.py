@@ -154,7 +154,37 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 except KeyError:  # if not available, error page
                     contents = Path('Error.html').read_text()
                     error_code = 404
-
+        elif first_argument == "/geneSeq":
+            try:  # check if value in endpoint
+                ENDPOINT = "xrefs/symbol/homo_sapiens/"
+                second_argument = arguments[1]
+                third_argument = second_argument.split("=")[1]
+                if third_argument == "":  # if nothing inserted, error page thrown
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
+                elif third_argument.isdigit() is True:  # if number inserted, error thrown
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
+                else:  # everything correct
+                    sequence = species_get(ENDPOINT + third_argument + PARAMS)[0]
+                    contents = f"""
+                                <!DOCTYPE html>
+                                <html lang="en">
+                                <head>
+                                    <meta charset="utf-8">
+                                    <title>Gene sequence</title>
+                                </head>
+                                <body style="background-color: darkorange">
+                                </body></html>
+                                """
+                    contents += f"""<b>The sequence of gene {sequence["id"]} known as {third_argument} is: <b>"""
+                    ENDPOINT = "/sequence/id/"  # put '/' at the end of endpoints
+                    sequence_1 = species_get(ENDPOINT + sequence["id"] + PARAMS)
+                    contents += f"""<p> <textarea readonly rows="30" cols="90"> {sequence_1["seq"]} </textarea>"""
+                    error_code = 200
+            except IndexError:
+                contents = Path('Error.html').read_text()
+                error_code = 404
 
 
         else:
