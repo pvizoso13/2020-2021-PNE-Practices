@@ -209,7 +209,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                     </body></html>"""
                     contents += f"""<b> The information about gene {third_argument} is: <b>"""
                     ENDPOINT = "lookup/id/"
-                    sequence_1 = species_get(ENDPOINT + third_argument + PARAMS)
+                    sequence_1 = species_get(ENDPOINT + sequence["id"] + PARAMS)
                     gene_length = int(sequence_1["end"]) - int(sequence_1["start"])
                     contents += f"""The start of the gene is: {sequence_1["start"]} </p>"""
                     contents += f"""The end of the gene is: {sequence_1["end"]} </p>"""
