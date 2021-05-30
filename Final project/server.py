@@ -3,6 +3,7 @@ import socketserver
 import json
 import termcolor
 from pathlib import Path
+from Seq1 import Seq
 
 
 def species_get(endpoint):  # function to obtain species from server rest.ensembl.org
@@ -216,6 +217,40 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     contents += f"""The length of the gene is: {gene_length} </p>"""
                     contents += f"""The ID of the gene is: {sequence_1["id"]} </p>"""
                     contents += f"""The gene is in the chromosome: {sequence_1["seq_region_name"]}"""
+                    error_code = 200
+            except IndexError:
+                contents = Path('Error.html').read_text()
+                error_code = 404
+        elif first_argument == "/geneCalc":
+            try:
+                ENDPOINT = "xrefs/symbol/homo_sapiens/"
+                second_argument = arguments[1]
+                third_argument = second_argument.split("=")[1]
+                if third_argument == "":  # if blank, error thrown
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
+                elif third_argument.isdigit() is True:
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
+                else:  # if everything correct
+                    sequence = species_get(ENDPOINT + third_argument + PARAMS)[0]
+                    contents = f"""<!DOCTYPE html>
+                                    <html lang="en">
+                                    <head>
+                                        <meta charset="utf-8">
+                                        <title> Gene calculations </title>
+                                    </head>
+                                    <body style="background-color: cornflowerblue">
+                                    </body></html>"""
+                    contents += f"""<b> The calculations of the gene {third_argument} are: </b>"""
+                    ENDPOINT = "sequence/id/"
+                    sequence_1 = species_get(ENDPOINT + sequence["id"] + PARAMS)
+                    seq = Seq(sequence_1["seq"])
+                    contents += f"""<p> Length of the gene is: {seq.len()} </p>"""
+                    bases = ["A", "C", "T", "G"]
+                    for base in bases:
+                        base_percentage = round(seq.count_base(base) * 100 / seq.len(), 2)
+                        contents += f"""The percentage of base {base} is: {base_percentage} %<br>"""
                     error_code = 200
             except IndexError:
                 contents = Path('Error.html').read_text()
