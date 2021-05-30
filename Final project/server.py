@@ -180,12 +180,46 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     contents += f"""<b>The sequence of gene {sequence["id"]} known as {third_argument} is: <b>"""
                     ENDPOINT = "/sequence/id/"  # put '/' at the end of endpoints
                     sequence_1 = species_get(ENDPOINT + sequence["id"] + PARAMS)
-                    contents += f"""<p> <textarea readonly rows="30" cols="90"> {sequence_1["seq"]} </textarea>"""
+                    contents += f"""<p> <textarea readonly rows="40" cols="100"> {sequence_1["seq"]} </textarea>"""
+                    error_code = 200
+
+            except IndexError:
+                contents = Path('Error.html').read_text()
+                error_code = 404
+        elif first_argument == "/geneInfo":
+            try:
+                ENDPOINT = "xrefs/symbol/homo_sapiens/"
+                second_argument = arguments[1]
+                third_argument = second_argument.split("=")[1]
+                if third_argument == "":  # if nothing inserted, error page thrown
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
+                elif third_argument.isdigit() is True:  # if number inserted, error thrown
+                    contents = Path('Error.html').read_text()
+                    error_code = 404
+                else:  # if everything correct
+                    sequence = species_get(ENDPOINT + third_argument + PARAMS)[0]
+                    contents = f"""<!DOCTYPE html>
+                                    <html lang="en">
+                                    <head>
+                                        <meta charset="utf-8">
+                                        <title> Gene information </title>
+                                    </head>
+                                    <body style="background-color: aqua">
+                                    </body></html>"""
+                    contents += f"""<b> The information about gene {third_argument} is: <b>"""
+                    ENDPOINT = "lookup/id/"
+                    sequence_1 = species_get(ENDPOINT + third_argument + PARAMS)
+                    gene_length = int(sequence_1["end"]) - int(sequence_1["start"])
+                    contents += f"""The start of the gene is: {sequence_1["start"]} </p>"""
+                    contents += f"""The end of the gene is: {sequence_1["end"]} </p>"""
+                    contents += f"""The length of the gene is: {gene_length} </p>"""
+                    contents += f"""The ID of the gene is: {sequence_1["id"]} </p>"""
+                    contents += f"""The gene is in the chromosome: {sequence_1["seq_region_name"]}"""
                     error_code = 200
             except IndexError:
                 contents = Path('Error.html').read_text()
                 error_code = 404
-
 
         else:
             contents = Path('Error.html').read_text()
