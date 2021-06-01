@@ -40,7 +40,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif first_argument == "/listSpecies":
             ENDPOINT = "info/species"
             species = species_get(ENDPOINT+PARAMS)["species"]
-            if len(arguments) > 1:
+            if len(arguments) == 2:
                 second_argument = arguments[1]
                 third_argument = second_argument.split('=')[1]  # from = to the end of second argument
             else:
@@ -86,7 +86,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 for name in species[:int(third_argument)]:
                     contents += f"""<p>- {name["common_name"]}<p>"""
                 contents += f"""<a href="/">Main page</a>"""
-
         elif first_argument == "/karyotype":
             ENDPOINT = "info/assembly/"  # final '/' because introduced in variable karyotype (line 99)
             second_argument = arguments[1]
