@@ -1,0 +1,348 @@
+listSpecies --> endpoint
+TEST 1. (number 2 specified as limit)
+* Input:
+http://localhost:8080/listSpecies?limit=3
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> List of species </title>
+</head>
+<body style="background-color: limegreen">
+<p>Total number of species is: 310 </p>
+<p>The limit you have selected is:3</p>
+<p>The names of the species are:</p>
+</body></html>
+<p>- little spotted kiwi<p><p>- Indian glassy fish<p><p>- blue tit<p><a href="/">Main page</a>
+
+TEST 2. (No number of limit specified, all species shown)
+* Input:
+http://localhost:8080/listSpecies?limit=
+* Output:
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset = "utf-8" >
+  <title> List of species </title >
+</head >
+<body>
+<body style="background-color: LimeGreen">
+<p>Total number of species: 310</p>
+<p>Limit of species selected: 310</p>
+<p>Name(s) of the species:</p>
+</body>
+</html>
+<p>- little spotted kiwi<p><p>- Indian glassy fish<p><p>- blue tit<p><p>- narwhal<p><p>- American beaver<p><p>- lumpfish<p><p>- Chinese hamster<p><p>- channel bull blenny<p><p>- Golden Hamster<p><p>- wild yak<p><p>- Siamese fighting fish<p><p>- eastern happy<p><p>- cape rock hyrax<p><p>- Eurasian eagle-owl<p><p>- Japanese quail<p><p>- fugu<p><p>- Asian bonytongue<p><p>- blue-ringed sea krait<p><p>- mouse<p><p>- Agassiz's desert tortoise<p><p>- lyretail cichlid<p><p>- coho salmon<p><p>- Oriental scops-owl<p><p>- zebra mbuna<p><p>- Arctic ground squirrel<p><p>- clown anemonefish<p><p>- koala<p><p>- algerian mouse<p><p>- sheep<p><p>- mouse<p><p>- dog<p><p>- Spoon-billed sandpiper<p><p>- Northern American deer mouse<p><p>- burrowing owl<p><p>- baker's yeast<p><p>- Spotted gar<p><p>- steppe mouse<p><p>- Canada lynx<p><p>- Polar bear<p><p>- Amazon molly<p><p>- tongue sole<p><p>- platypus<p><p>- Common snapping turtle<p><p>- Western painted turtle<p><p>- gray short-tailed opossum<p><p>- Golden snub-nosed monkey<p><p>- helmeted guineafowl<p><p>- golden-line barbel<p><p>- Sea squirt Ciona savignyi<p><p>- Western Lowland Gorilla<p><p>- northern pike<p><p>- swamp eel<p><p>- Indian peafowl<p><p>- barramundi perch<p><p>- meerkat<p><p>- Chinese medaka<p><p>- pig<p><p>- Makobe Island cichlid<p><p>- reedfish<p><p>- Ryukyu mouse<p><p>- red fox<p><p>- tammar wallaby<p><p>- central bearded dragon<p><p>- vaquita<p><p>- White-headed capuchin<p><p>- alpaca<p><p>- small Madagascar hedgehog<p><p>- Angola colobus<p><p>- Pig-tailed macaque<p><p>- cattle<p><p>- orbiculate cardinalfish<p><p>- Eastern spot-billed duck<p><p>- common carp hebao red<p><p>- yellowtail amberjack<p><p>- Brazilian guinea pig<p><p>- Mexican tetra<p><p>- ruff<p><p>- domestic yak<p><p>- zebra finch<p><p>- Black snub-nosed monkey<p><p>- Bengalese finch<p><p>- Damara mole rat<p><p>- Japanese medaka HdrR<p><p>- Budgie<p><p>- Philippine tarsier<p><p>- Chacoan peccary<p><p>- southern platyfish<p><p>- common mallard<p><p>- Swainson's thrush<p><p>- elephant shark<p><p>- turquoise killifish<p><p>- pig<p><p>- Ugandan red Colobus<p><p>- pig<p><p>- lion<p><p>- Lesser Egyptian jerboa<p><p>- three-spined stickleback<p><p>- domestic guinea pig<p><p>- dingo<p><p>- Daurian ground squirrel<p><p>- dog<p><p>- Three-toed box turtle<p><p>- Tasmanian devil<p><p>- Siberian musk deer<p><p>- pig<p><p>- mouse<p><p>- Indian medaka<p><p>- mouse<p><p>- domestic cat<p><p>- Chinese hamster<p><p>- Norway rat<p><p>- Alpine marmot<p><p>- Goat<p><p>- medium ground-finch<p><p>- Shrew mouse<p><p>- large flying fox<p><p>- Bornean orangutan<p><p>- Atlantic salmon<p><p>- Sooty mangabey<p><p>- chicken<p><p>- green anole<p><p>- Argentine black and white tegu<p><p>- Degu<p><p>- Indian cobra<p><p>- Drill<p><p>- C.elegans<p><p>- white-tufted-ear marmoset<p><p>- Goodes thornscrub tortoise<p><p>- rufous-capped babbler<p><p>- pink-footed goose<p><p>- pig<p><p>- Upper Galilee mountains blind mole rat<p><p>- bicolor damselfish<p><p>- live sharksucker<p><p>- Coquerel's sifaka<p><p>- bottlenosed dolphin<p><p>- mouse<p><p>- northern tree shrew<p><p>- Atlantic herring<p><p>- greater horseshoe bat<p><p>- Gouldian finch<p><p>- Sea squirt Ciona intestinalis<p><p>- blue tilapia<p><p>- tropical clawed frog<p><p>- california sea lion<p><p>- dog<p><p>- muscovy Duck (domestic type)<p><p>- mouse<p><p>- goat<p><p>- human<p><p>- Great spotted kiwi<p><p>- ocean sunfish<p><p>- Bolivian squirrel monkey<p><p>- Chinook salmon<p><p>- zig-zag eel<p><p>- naked mole-rat<p><p>- turkey<p><p>- nine-banded armadillo<p><p>- Paramormyrops kingsleyae<p><p>- guppy<p><p>- sea lamprey<p><p>- hybrid cattle<p><p>- Hoffmann's two-fingered sloth<p><p>- huchen<p><p>- rainbow trout<p><p>- large yellow croaker<p><p>- Asiatic black bear<p><p>- pig<p><p>- blue-crowned manakin<p><p>- javanese ricefish<p><p>- swan goose<p><p>- blunt-snouted clingfish<p><p>- African ostrich<p><p>- common carp<p><p>- turbot<p><p>- western European hedgehog<p><p>- Olive baboon<p><p>- western mosquitofish<p><p>- Long-tailed chinchilla<p><p>- Inshore hagfish<p><p>- Macaque<p><p>- vole<p><p>- Atlantic cod<p><p>- little brown bat<p><p>- pike-perch<p><p>- Midas cichlid<p><p>- gray mouse lemur<p><p>- beluga whale<p><p>- mouse<p><p>- dark-eyed junco<p><p>- Domestic ferret<p><p>- blind barbel<p><p>- emu<p><p>- Collared flycatcher<p><p>- Ma's night monkey<p><p>- mallard<p><p>- silver-eye<p><p>- eastern brown snake<p><p>- Tiger<p><p>- pig<p><p>- common canary<p><p>- tiger tail seahorse<p><p>- mouse<p><p>- greater bamboo lemur<p><p>- West African mud turtle<p><p>- Japanese medaka HSOK<p><p>- brown trout<p><p>- tuatara<p><p>- pig<p><p>- European shrew<p><p>- sperm whale<p><p>- European seabass<p><p>- pinecone soldierfish<p><p>- pig<p><p>- American black bear<p><p>- sheepshead minnow<p><p>- Great Tit<p><p>- thirteen-lined ground squirrel<p><p>- sailfin molly<p><p>- mouse<p><p>- common wombat<p><p>- mouse<p><p>- Eurasian sparrowhawk<p><p>- mouse<p><p>- horned golden-line barbel<p><p>- Mongolian gerbil<p><p>- naked mole-rat<p><p>- jewelled blenny<p><p>- New Caledonian crow<p><p>- American mink<p><p>- eastern buzzard<p><p>- Australian saltwater crocodile<p><p>- chimpanzee<p><p>- horse<p><p>- common wall lizard<p><p>- Kakapo<p><p>- Abingdon island giant tortoise<p><p>- pig<p><p>- golden pheasant<p><p>- hybrid cattle<p><p>- mouse<p><p>- Chinese softshell turtle<p><p>- gilthead seabream<p><p>- Okarito brown kiwi<p><p>- mangrove rivulus<p><p>- gelada<p><p>- Leishan spiny toad<p><p>- Ord's kangaroo rat<p><p>- superb fairywren<p><p>- Pachon cavefish<p><p>- mouse<p><p>- white-throated sparrow<p><p>- common carp huanghe<p><p>- donkey<p><p>- golden eagle<p><p>- red-bellied piranha<p><p>- African savanna elephant<p><p>- pig<p><p>- giant panda<p><p>- ballan wrasse<p><p>- Eurasian red squirrel<p><p>- Arabian camel<p><p>- bonobo<p><p>- Ring-necked pheasant<p><p>- small-eared galago<p><p>- Nile tilapia<p><p>- common carp german mirror<p><p>- orange clownfish<p><p>- common kestrel<p><p>- pig<p><p>- coelacanth<p><p>- goldfish<p><p>- Periophthalmus magnuspinnatus<p><p>- northern spotted owl<p><p>- shortfin molly<p><p>- Crab-eating macaque<p><p>- American bison<p><p>- Yarkand deer<p><p>- electric eel<p><p>- climbing perch<p><p>- rabbit<p><p>- mouse<p><p>- Northern white-cheeked gibbon<p><p>- Monterrey platyfish<p><p>- mouse<p><p>- round goby<p><p>- yellow-billed parrot<p><p>- mainland tiger snake<p><p>- Chinese hamster<p><p>- American pika<p><p>- mouse<p><p>- channel catfish<p><p>- Japanese medaka HNI<p><p>- zebrafish<p><p>- small tree finch<p><p>- golden-collared manakin<p><p>- fruit fly<p><p>- Chilean tinamou<p><p>- Blue whale<p><p>- spiny chromis<p><p>- African green monkey<p><p>- Burton's mouthbrooder<p><p>- denticle herring<p><p>- leopard<p><p>- spotted green pufferfish<p><p>- sheep<p><p>- mummichog<p><p>- pig<p><p>- Komodo dragon<p><p>- greater amberjack<p><a href="/">Main page</a>
+
+TEST 3. (number of limit specified out of range)
+* Input:
+http://localhost:8080/listSpecies?limit=369
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+karyotype --> endpoint
+TEST 4. (mouse specified to obtain the karyotype)
+* Input:
+http://localhost:8080/karyotype?specie=mouse
+* Output:
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset = "utf-8" >
+ <title> Karyotype </title >
+</head >
+<body>
+<body style="background-color: DeepSkyBlue">
+<p>The names of the chromosomes are:</p>
+</body>
+</html>
+<p>- 1<p><p>- 2<p><p>- 3<p><p>- 4<p><p>- 5<p><p>- 6<p><p>- 7<p><p>- 8<p><p>- 9<p><p>- 10<p><p>- 11<p><p>- 12<p><p>- 13<p><p>- 14<p><p>- 15<p><p>- 16<p><p>- 17<p><p>- 18<p><p>- 19<p><p>- X<p><p>- Y<p><p>- MT<p><a href="/">Main page</a>
+
+TEST 5: (wrong karyotype specified)
+* Input:
+http://localhost:8080/karyotype?specie=hk
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 6. (space left in blank)
+* Input:
+http://localhost:8080/karyotype?specie=
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+chromosomeLength --> endpoint
+TEST 7. (both blank)
+* Input:
+http://localhost:8080/chromosomeLength?specie=&chromosome=
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 8. (specie: mouse, chromosome blank)
+* Input:
+http://localhost:8080/chromosomeLength?specie=mouse&chromosome=
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 9. (correct specie and chromosome)
+* Input:
+http://localhost:8080/chromosomeLength?specie=mouse&chromosome=2
+* Output:
+ <!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "utf-8" >
+  <title> Chromosome length </title >
+</head >
+<body>
+<body style="background-color: darkviolet">
+</body>
+</html>
+<p>Length of chromosome: 2 of mouse is: 181755017</p><a href="/">Main page</a>
+
+TEST 10: (wrong specie)
+* Input:
+http://localhost:8080/chromosomeLength?specie=hk&chromosome=18
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 11: (wrong chromosome)
+* Input:
+http://localhost:8080/chromosomeLength?specie=human&chromosome=24
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+geneSeq --> endpoint
+TEST 12: (blank space inserted)
+* Input:
+http://localhost:8080/geneSeq?gene=
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 13: (wrong gene inserted)
+* Input:
+http://localhost:8080/geneSeq?gene=hsfhieua
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 14: (FRAT1 correct)
+* Input:
+http://localhost:8080/geneSeq?gene=FRAT1
+* Output:
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Gene sequence</title>
+</head>
+<body style="background-color: darkorange">
+</body></html>
+<b>The sequence of gene ENSG00000165879 known as FRAT1 is: <b><p> <textarea readonly rows="40" cols="100"> CGGCTCCCGCGGCTGCAGGCGCGCGGCTAGAGTGCCTGGCGGGCTCCGGCTTCCGCGTCCGCCCCGGCCCCGGTCCAGACTTAGTCTTCAGCTCCGCGCCCGCTCCGCCGCGGCCCACCGCGCCCGCCGGCAGCCGAGCCCCCAGCGACGCCCGCACAGCTCCGGGTGCCCAGACAGGGGGCCATGCCGTGCCGGAGGGAGGAGGAAGAGGAAGCCGGCGAGGAGGCGGAGGGGGAGGAAGAGGAGGAGGACAGCTTCCTCCTACTGCAGCAGTCAGTGGCGCTGGGCAGCTCGGGCGAGGTGGACCGGCTGGTGGCCCAGATCGGCGAGACGCTGCAGCTGGACGCGGCGCAGCACAGCCCGGCCTCGCCGTGCGGGCCCCCGGGGGCGCCGCTGCGGGCCCCGGGGCCCCTGGCTGCGGCGGTGCCGGCGGACAAGGCCAGGTCCCCGGCGGTGCCGCTGCTGCTGCCGCCCGCGTTGGCGGAGACTGTGGGCCCGGCGCCCCCTGGGGTCCTGCGCTGCGCCCTGGGGGACCGCGGCCGCGTGCGGGGCCGCGCTGCGCCCTACTGCGTGGCCGAGCTCGCCACAGGCCCCAGCGCGCTGTCCCCACTGCCCCCTCAGGCCGACCTTGATGGGCCTCCGGGAGCTGGCAAGCAGGGCATCCCGCAGCCGCTGTCGGGTCCGTGCCGGCGAGGATGGCTCCGGGGCGCCGCCGCCTCCCGCCGCCTGCAGCAGCGACGCGGGTCCCAACCAGAAACCCGCACAGGCGACGACGACCCGCACCGGCTTCTGCAGCAGCTAGTGCTCTCTGGAAACCTCATCAAGGAGGCCGTGCGAAGGCTTCATTCGCGACGGCTGCAGTTACGTGCAAAGCTTCCCCAACGCCCGCTCCTGGGACCTCTGTCGGCCCCGGTGCATGAACCCCCTTCGCCTCGCAGCCCTCGCGCGGCCTGCAGTGACCCTGGCGCCTCCGGGAGGGCGCAGCTCAGAACTGGCGACGGCGTTCTTGTGCCTGGCAGCTAACACGCCCGGGGTGGCCACAGCGCCAGCCTCAGACTGGAGGGCAAGGGGTTCCCTTGAGGGCTGCAGTTCTACTCAGGCTGGTGGAGAACTCTGGCTTTTGGAAGCGAGAGTAAAAAGCTAATGACGAGGAACCGAAAAATCGCGAGTGTTTCGCGGGTAACTGGGGTTGAGGGCCAAAATATTTGGAATGAAGGACTTTGGCCCTATTTAAGGCAGATTTTACAGAGCGCACCTCAAACGTACAAGTCAGTAGGACTCCTTATTTGGCGTGACCCGACCTGGCCGCGGAGCCTGCATTTCCTCGCAGCCTCTCAGTGCCCTCCAGCCCCGCGACCATGTGGCCACAATCCACGCTTCTCCGGATCGCGGTGCGCCGGAACCACGGAGGATGATGCCAGTTACTTGCTTTACCTTTTCAGGGCTGGCTCCTGATCCACTTTGGGGGAGGAGAACATGAGTAGATAATTTCAGGGTGCAGCCCAATCTGCCAGACTTAAAAAAACCATCTTGTGTCTTTGGAGGTGCTGCTTAATACCAAACATGCGGTGCCATGAAGGGACCCTTTGGGGGTTGAATAGGAGTTAACCCCTGCGCTCTCTTTGCAACTGTCTCTCTTCTCAGAGTGGTGGGGGAAGGCTGTACGACACGGGTGGGGAAAGGAGGTGGGGGCGGGGAGTATTGAATGGTGGTGGAAGGGTAGAGAGGCGCGGAGTGAACCCCACGCCCTGTCTAAAGTGTATTTTCAGAGCCGGCCCGCCTCTCCTCGGTTCAAGGTCACTGTTTCCTGGGCACGCACTGGGTTGCGGGACAGAGTAGCCAGGTTCTGCCGGTGCTCGGAGAAGAGCGCAGTGTTTTGCAAGTGCTGGAGTCTCCTGAGGACACGCGCGTCGCCGCCACCGCGGGTGTGGGAAAGCGCGGACGTGCTGGGCGGCTGTGCTTCGGTAGGCGACCACCGCCCCTGGCCGCGCTCCGGGCTTTCACGGAAACTCCCGAGACCGGGCCCTGGGTTCCTCCTCTCCTACTCGGCTCTGCAGTCCTACTCAAGCGGGTGGCTCTGGGATCCTGGGGGCCTGGGTTGGGGGCTAGGGAGACGCCATGTGATGGACACTCCAGGGACACACAGCCTAGCACAGCAGCTTATAATGGGCTCTCCGGGGCCATTTGCAATAACAGCTGCAATTCCCTGGATAGACGAGTTGATTTCCTCCCTCTGCCCCTCCCCCAGCCATGCCAGCTGGCCTTTGTAAGTGCAGGAAACCGAGTAGAAAATGTGACCCTCCAAATGGAGAAGCTGCAGGCTTTGCCATTGTGAACCATGGTGAAGTGCTTGGAACATACTGTTCACTCACTCTAAAGGCGCTGAGACTGTGCTGTTGTTCTCGTTTTTATAGTCAATGGCTTGTTCATCATCCAGATGTGGCTACTGACATATCTACACTTCGCACCGGAGTGTCTGGAATTGTGGCTATCCTGATTATAGGATTTTAACTTAACTGAAATGCCTGCTTTGAATAAATGTGTTGGGTTTTTTGTTTGGTTTTATTTTATACTTGCCATCAGTGAAAAAGATGTACAGAACACATTTCTCTGATCTCCATAAACATGAAAACACTTGAAATCTC </textarea>
+
+geneInfo --> endpoint
+TEST 15: (blank)
+* Input:
+http://localhost:8080/geneInfo?gene=
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 16: (wrong)
+* Input:
+http://localhost:8080/geneInfo?gene=1212
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 17: (correct gene FRAT1)
+* Input:
+http://localhost:8080/geneInfo?gene=FRAT1
+* Output:
+ <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Gene information </title>
+</head>
+<body style="background-color: aqua">
+</body></html><b> The information about gene FRAT1 is: <b>The start of the gene is: 97319271 </p>The end of the gene is: 97321915 </p>The length of the gene is: 2644 </p>The ID of the gene is: ENSG00000165879 </p>The gene is in the chromosome: 10
+
+geneCalc --> endpoint
+TEST 18: (blank)
+* Input:
+http://localhost:8080/geneCalc?gene=
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 19: (wrong introduced)
+* Input:
+http://localhost:8080/geneCalc?gene=-69
+* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body style="background-color: red">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+</body>
+</html>
+
+TEST 20: (correct introduction gene, FRAT1)
+* Input:
+http://localhost:8080/geneCalc?gene=FRAT1
+* Output:
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Gene calculations </title>
+</head>
+<body style="background-color: cornflowerblue">
+</body></html><b> The calculations of the gene FRAT1 are: </b><p> Length of the gene is: 2645 </p>The percentage of base A is: 18.03 %<br>The percentage of base C is: 30.21 %<br>The percentage of base T is: 19.66 %<br>The percentage of base G is: 32.1 %<br>
